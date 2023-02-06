@@ -4,105 +4,105 @@
 
 class Calculator
 {
+    double num1 = 1;
+
+    double num2 = 1;
 
 public:
-    double num1;
-
-    double num2;
 
     double add()
     {
         return num1 + num2;
     }
-    double multiply() 
+    double multiply()
     {
         return num1 * num2;
     }
-    double subtract_1_2() 
+    double subtract_1_2()
     {
         return num1 - num2;
     }
-    double subtract_2_1() 
+    double subtract_2_1()
     {
         return num2 - num1;
     }
-    double divide_1_2() 
+    double divide_1_2()
     {
         return num1 / num2;
     }
-    double divide_2_1() 
+    double divide_2_1()
     {
         return num2 / num1;
     }
     bool set_num1(double num1);
 
     bool set_num2(double num2);
-   
+
 };
 
 
 bool Calculator::set_num1(double num1)
 {
-    if (num1 == 0)
+    std::cout << "Введите num1: ";
+
+    std::cin >> num1;
+
+    if (num1 != 0)
     {
-        return false;
+        this->num1 = num1;
+
+        return true;
     }
     else
     {
-        return true;
+        std::cout << "Неверный ввод! " << std::endl;
+        return false;
     };
 }
 
 bool Calculator::set_num2(double num2)
 {
-    if (num2 == 0) 
+    std::cout << "Введите num2: ";
+
+    std::cin >> num2;
+
+    if (num2 != 0)
     {
-        return false;
+        this->num2 = num2;
+
+        return true;
     }
     else
     {
-        return true;
+        std::cout << "Неверный ввод! " << std::endl;
+        return false;
     };
-    
+
 }
 
 
-int main(int argc, char** argv) 
+int main(int argc, char** argv)
 {
     setlocale(LC_ALL, "Russian");
 
-    Calculator calc = {};
+    Calculator calc;
+
+    double n = 1;
 
     while (true)
     {
-        std::cout << "Введите num1: ";
-
-        std::cin >> calc.num1;
-
-            if (calc.set_num1(calc.num1) == false)
-            {
-                for ( ;calc.num1 == 0; ) 
-                {
-                    std::cout << "Неверный ввод! " << std::endl;
-                    std::cout << "Введите num1: ";
-                    std::cin >> calc.num1;
-                }
-            }
-
-        std::cout << "Введите num2: ";
-
-        std::cin >> calc.num2;
-
-        if (calc.set_num2(calc.num2) == false)
+        if (calc.set_num1(n) == 0)
         {
-            for ( ;calc.num2 == 0; ) 
-            {
-                std::cout << "Неверный ввод! " << std::endl;
-                std::cout << "Введите num2: ";
-                std::cin >> calc.num2;
-            }
+            for (; calc.set_num1(n) == 0;);
         }
-        
+
+        if (calc.set_num2(n) == 0)
+        {
+            for (; calc.set_num2(n) == 0;);
+        }
+
+
+
         std::cout << "num1 + num2 = " << calc.add() << std::endl;
 
         std::cout << "num1 * num2 = " << calc.multiply() << std::endl;
