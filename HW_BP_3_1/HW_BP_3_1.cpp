@@ -43,9 +43,6 @@ public:
 
 bool Calculator::set_num1(double num1)
 {
-    std::cout << "Введите num1: ";
-
-    std::cin >> num1;
 
     if (num1 != 0)
     {
@@ -55,16 +52,12 @@ bool Calculator::set_num1(double num1)
     }
     else
     {
-        std::cout << "Неверный ввод! " << std::endl;
         return false;
     };
 }
 
 bool Calculator::set_num2(double num2)
 {
-    std::cout << "Введите num2: ";
-
-    std::cin >> num2;
 
     if (num2 != 0)
     {
@@ -74,7 +67,6 @@ bool Calculator::set_num2(double num2)
     }
     else
     {
-        std::cout << "Неверный ввод! " << std::endl;
         return false;
     };
 
@@ -91,14 +83,32 @@ int main(int argc, char** argv)
 
     while (true)
     {
+        std::cout << "Введите num1: ";
+
+        std::cin >> n;
+
         if (calc.set_num1(n) == 0)
         {
-            for (; calc.set_num1(n) == 0;);
+            for (; calc.set_num1(n) == 0;) 
+            {
+                std::cout << "Неверный ввод! " << std::endl;
+                std::cout << "Введите num1: ";
+                std::cin >> n;
+            }
         }
+
+        std::cout << "Введите num2: ";
+
+        std::cin >> n;
 
         if (calc.set_num2(n) == 0)
         {
-            for (; calc.set_num2(n) == 0;);
+            for (; calc.set_num2(n) == 0;) 
+            {
+                std::cout << "Неверный ввод! " << std::endl;
+                std::cout << "Введите num2: ";
+                std::cin >> n;
+            }
         }
 
 
